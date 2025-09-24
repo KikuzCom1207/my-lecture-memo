@@ -8,9 +8,40 @@ dependencies = [
     "furo>=2025.7.19",
     "myst-parser>=4.0.1",
     "pre-commit>=4.3.0",
+    "ruff>=0.13.1",
     "sphinx>=8.2.3",
     "sphinx-copybutton>=0.5.2",
     "sphinx-diagrams>=0.4.0",
     "sphinx-markdown-tables>=0.0.17",
     "sphinxcontrib-mermaid>=1.0.0",
 ]
+
+[tool.ruff]
+line-length = 100
+exclude = [".git", ".ruff_cache", ".venv", ".vscode"]
+
+[tool.ruff.lint]
+preview = true
+select = [
+    "ANN", # type annotation
+    "E",   # pycodestyle errors
+    "F",   # pyflakes
+    "I",   # isort
+    "RUF", # ruff specific rules
+    "W",   # pycodestyle warnings
+]
+ignore = [
+    "B007",
+    "B008",
+    "B905",
+]
+unfixable = [
+    "F401",
+    "F841",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
